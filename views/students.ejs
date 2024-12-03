@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-12">
+        <br>
+        <h2>Students</h2>
+        <a href="/students/add" class="btn btn-success float-right">Add New Student</a>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Student Num</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Status</th>
+                        <th>Course ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (students && students.length > 0) { %>
+                        <% students.forEach(student => { %>
+                            <tr>
+                                <td><%= student.studentNum %></td>
+                                <td><a href="/student/<%= student.studentNum %>"><%= student.firstName %> <%= student.lastName %></a></td>
+                                <td><a href="mailto:<%= student.email %>"><%= student.email %></a></td>
+                                <td><%= student.addressStreet %></td>
+                                <td><%= student.status %></td>
+                                <td><a href="/students?course=<%= student.course %>"><%= student.course %></a></td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="6" class="text-center">No students found</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
